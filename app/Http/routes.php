@@ -12,7 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 Route::get('/home','PagesController@getHomeView');
-Route::any('/page', 'PagesController@saveDatabase');
+Route::any('/page', 'DataController@saveDatabase');
+
+Route::post('test', function()
+{
+	return 'Success! ajax in laravel 5';
+});
