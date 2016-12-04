@@ -20,12 +20,12 @@
 
 	$("#clickme").click(function(){
 	    if($("#writeme").val() == ""){
-	        alert("abc");
+	        alert("null");
 	    }
 	    else{
 	         $.ajax({
 	                    url : "/save",
-	                    type : "get",
+	                    type : "post",
 	                    data : {
 	                         username : $('#writeme').val()
 	                    },

@@ -13,7 +13,7 @@ class PagesController extends Controller
     	return view ('pages.home');
     }
     function saveDatabase(){
-    	$value = \Request::get('username');
+    	$value = \Request::post('username');
     	dd($value);
     	$savevalue = \App\Test::where('name', '=', $value)->first();
     	if(!$savevalue){
