@@ -46,18 +46,7 @@
     	}); //end of ajax
 
 	});
-	$("#clicktoshow").click(function(){
-
-		$.ajax({
-			url: "page?name",
-			type:"POST",
-			success:function(){
-				alert("success")
-			},error:function(){ 
-				alert("error!!!!");
-			}		
-		})
-	});
+	
 </script>
 
 </html>
