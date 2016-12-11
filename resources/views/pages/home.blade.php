@@ -11,17 +11,7 @@
 		<p>English: <input type="text" id="english"></p>
 		<button id="clickme">Click me!</button>
 	</div>
-<<<<<<< HEAD
-	<br>
-	<br>
-	<div>
-		<button id="clicktoshow"> Click me to show:</button>
 
-		<input type="text" id="database" value= {{ isset($name) ? $name:"none" }} >
-	</div>
-=======
-
->>>>>>> origin/master
 </body>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
