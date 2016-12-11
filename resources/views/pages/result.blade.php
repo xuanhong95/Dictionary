@@ -46,7 +46,7 @@
 	});
 
 	$('#sayit').click(function(){
-		responsiveVoice.speak(($('#english').val()), 'Vietnamese Male');
+		responsiveVoice.speak($('#english').val());
 	});
 </script>
 
