@@ -15,8 +15,12 @@ Route::get('/', function () {
 	return view('welcome');
 });
 Route::get('/home','PagesController@getHomeView');
-Route::get('/page', 'DataController@saveDatabase');
-Route::post('/page','DataController@getDatabase');
+
+
+
+Route::any('/page', 'DataController@checkDatabase');
+Route::any('/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaning']);
+
 
 Route::post('test', function()
 {

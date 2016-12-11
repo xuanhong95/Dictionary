@@ -8,9 +8,10 @@
 <body>
 	<h1>This is the HomePage</h1>
 	<div>
-			<p>Write me: <input type="text" id="writeme"></p>
-			<button id="clickme">Click me!</button>
+		<p>English: <input type="text" id="english"></p>
+		<button id="clickme">Click me!</button>
 	</div>
+<<<<<<< HEAD
 	<br>
 	<br>
 	<div>
@@ -18,28 +19,38 @@
 
 		<input type="text" id="database" value= {{ isset($name) ? $name:"none" }} >
 	</div>
+=======
+
+>>>>>>> origin/master
 </body>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.js"></script>
+
 <script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 </script>
 
 <script type="text/javascript">
 	$("#clickme").click(function(){
 		$.ajax({
-			url: "page?username=" + $('#writeme').val(),
-			type:"GET",
+
+			url: "page?term=" + $('#english').val(),
+			type:"POST",
+
 			data: {
-				username: $('#writeme').val()
+				term: $('#english').val()
 			},
-			success:function(data){
-				alert("success")
+			success:function(response){
+				if(response != "Từ không tồn tại"){
+					window.location.href = "/result/" + response;
+				}
+				else{
+					alert("Từ không tồn tại");
+				}
 			},error:function(){ 
 				alert("error!!!!");
 			}

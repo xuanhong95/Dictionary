@@ -8,17 +8,23 @@ use App\Http\Requests;
 
 class DataController extends Controller
 {
-    function saveDatabase(){
-    	$value = \Request::input('username');
-    	$savevalue = \App\Test::where('name', '=', $value)->first();
+    function checkDatabase(){
+    	$value = \Request::input('term');
+    	$savevalue = \DB::table('tbl_edict')->where('word', '=', $value)->first();
     	if(!$savevalue){
-    		$savevalue = new \App\Test();
-    		$savevalue->name = $value;
-    		$savevalue->save();
+    		return "Từ không tồn tại";
     	}
+    	else{
+    		return $value;
+    	}	
     }
-    function getDatabase(){
-    	$value=Test::all()->name;
-    	return view('home',['name'=>$value]);
-    }
+
+
+
+	function showMeaning($term){
+		$savevalue = \DB::table('tbl_edict')->where('word', '=', $term)->first();
+		$result = $savevalue->detail;
+		return view('pages.result', compact('result', 'term'));
+	}
+
 }
