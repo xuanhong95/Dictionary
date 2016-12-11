@@ -17,4 +17,8 @@ class DataController extends Controller
     		$savevalue->save();
     	}
     }
+    function getDatabase(){
+    	$value=Test::all()->name;
+    	return view('home',['name'=>$value]);
+    }
 }
