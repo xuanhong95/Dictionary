@@ -11,6 +11,9 @@
 		<button id="sayit"> 🔊 Play</button>
 	</div>
 	<div>
+		{!! $image !!}
+	</div>
+	<div>
 		{!! $result !!}
 	</div>
 </body>
