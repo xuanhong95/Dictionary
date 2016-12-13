@@ -9,9 +9,9 @@ class DataController extends Controller
 {
     function checkDatabase(){
     	$value = \Request::input('term');
-    	$savevalue = \DB::table('tbl_edict')->where('word', '=', $value)->first();
+    	$savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();
     	if(!$savevalue){
-    		return "Từ không tồn tại";
+    		return false;
     	}
     	else{
     		return $value;
@@ -20,8 +20,8 @@ class DataController extends Controller
 
 
     function showMeaning($term){
-      $savevalue = \DB::table('tbl_edict')->where('word', '=', $term)->first();
-      $result = $savevalue->detail;
+      $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
+      $result = $savevalue->content;
       $search_query = $term;
       $search_query = urlencode( $search_query );
       $html11 = file_get_html( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
