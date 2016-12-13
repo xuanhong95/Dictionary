@@ -21,10 +21,16 @@ class DataController extends Controller
 
 
 
-	function showMeaning($term){
+	function showMeaningEV($term){
 		$savevalue = \DB::table('tbl_edict')->where('word', '=', $term)->first();
 		$result = $savevalue->detail;
 		return view('pages.result', compact('result', 'term'));
 	}
+
+    function showMeaningVE($term){
+        $savevalue = \DB::table('tbl_edict')->where('word', '=', $term)->first();
+        $result = $savevalue->detail;
+        return view('pages.result', compact('result', 'term'));
+    }
 
 }

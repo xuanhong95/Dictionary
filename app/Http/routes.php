@@ -19,8 +19,8 @@ Route::get('/home','PagesController@getHomeView');
 
 
 Route::any('/page', 'DataController@checkDatabase');
-Route::any('/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaning']);
-
+Route::any('/result/{ev}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningEV']);
+Route::any('/result/{ve}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningVE']);
 
 Route::post('test', function()
 {
