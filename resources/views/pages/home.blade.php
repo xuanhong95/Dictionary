@@ -51,7 +51,7 @@
 	</div>
 
 	<div id="VE" class="tabContent">
-		<p>Vietnamese: <input type="text" id="vietnamese"></p>
+		<p>Vietnamese: <input type="text" id="vietnamese" ></p>
 		<button id="VETranslate" value="vn">Click me!</button>
 	</div>
 
@@ -114,9 +114,35 @@
     	}); //end of ajax
 
 	});
-
+	//choose default tab
 	document.getElementById("defaultTab").click();
 
+
+	//add listener for enter keyup listener event
+	var en=document.getElementById("english");
+	var vn=document.getElementById("vietnamese");
+		
+	en.addEventListener('keyup',function(event){
+		enterpress(event);
+	},false);
+	vn.addEventListener('keyup',function(event){
+		enterpress(event);
+	},false);
+
+
+	function enterpress(evt){
+		var key = evt.which ;
+		
+		if(key==13){
+			if(evt.currentTarget.id=="english"){
+				document.getElementById("EVTranslate").click();
+			}else{
+				document.getElementById("VETranslate").click();
+			}
+		}
+	}
+
+	
 	function chooseDictType(event,dictName){
 		var i,tabContent,tablink;
 
@@ -129,8 +155,11 @@
 		for(i=0;i<tablink.length;i++){
 			tablink[i].className=tablink[i].className.replace("active","");
 		}
+
 		document.getElementById(dictName).style.display="block";
 		event.currentTarget.className+=" active";
+
+		$("#dictName > p > input").focus();
 		
 	}
 		</script>
