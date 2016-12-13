@@ -11,6 +11,9 @@
 		<button id="sayit"> 🔊 Play</button>
 	</div>
 	<div>
+		{!! $image !!}
+	</div>
+	<div>
 		{!! $result !!}
 	</div>
 </body>
@@ -33,7 +36,7 @@
 				term: $('#english').val()
 			},
 			success:function(response){
-				if(response != "Từ không tồn tại"){
+				if(response){
 					window.location.href = "/result/" + response;
 				}
 				else{
@@ -46,7 +49,7 @@
 	});
 
 	$('#sayit').click(function(){
-		responsiveVoice.speak($('#english').val());
+		responsiveVoice.speak(($('#english').val()), "Vietnamese Male");
 	});
 </script>
 

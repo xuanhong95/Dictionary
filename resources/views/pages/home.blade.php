@@ -71,11 +71,11 @@
 	$("#EVTranslate").click(function(){
 		$.ajax({
 
-			url: "page?ev=" + $('#english').val(),
+			url: "page?term=" + $('#english').val(),
 			type:"POST",
 
 			data: {
-				ev: $('#english').val()
+				term: $('#english').val()
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
@@ -94,11 +94,11 @@
 	$("#VETranslate").click(function(){
 		$.ajax({
 
-			url: "page?ve=" + $('#vietnamese').val(),
+			url: "page?term=" + $('#vietnamese').val(),
 			type:"POST",
 
 			data: {
-				ve: $('#vietnamese').val()
+				term: $('#vietnamese').val()
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
