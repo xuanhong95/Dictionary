@@ -9,9 +9,15 @@ class DataController extends Controller
 {
     function checkDatabase(){
     	$value = \Request::input('term');
-    	$savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();
+      $type = \Request::input('searchtype');
+      if($type=="en"){
+        $savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();
+      }else{
+        $savevalue = \DB::table('viet_anh')->where('word', '=', $value)->first();
+      }
+    	
     	if(!$savevalue){
-    		return false;
+    		return "Từ không tồn tại";
     	}
     	else{
     		return $value;
@@ -22,7 +28,6 @@ class DataController extends Controller
 
 
     function showMeaningEV($term){
-        dd($term);
       $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
       $result = $savevalue->content;
       $search_query = $term;

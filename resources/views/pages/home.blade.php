@@ -47,12 +47,12 @@
 
 	<div id="EV" class="tabContent">
 		<p>English: <input type="text" id="english"></p>
-		<button id="EVTranslate">Click me!</button>
+		<button id="EVTranslate" value="en">Click me!</button>
 	</div>
 
 	<div id="VE" class="tabContent">
 		<p>Vietnamese: <input type="text" id="vietnamese"></p>
-		<button id="VETranslate">Click me!</button>
+		<button id="VETranslate" value="vn">Click me!</button>
 	</div>
 
 </body>
@@ -70,16 +70,15 @@
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
 		$.ajax({
-
-			url: "page?term=" + $('#english').val(),
+			url: "page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
-
 			data: {
-				term: $('#english').val()
+				term: $('#english').val(),
+				searchtype: $('#EVTranslate').val()
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "/result/" + response;
+					window.location.href = "en/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -94,15 +93,17 @@
 	$("#VETranslate").click(function(){
 		$.ajax({
 
-			url: "page?term=" + $('#vietnamese').val(),
+			url: "page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
 			type:"POST",
 
 			data: {
-				term: $('#vietnamese').val()
+				term: $('#vietnamese').val(),
+				type: $('#VETranslate').val()
 			},
+
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "/result/" + response;
+					window.location.href = "vn/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
