@@ -8,7 +8,7 @@ use App\Http\Requests;
 class DataController extends Controller
 {
     function checkDatabase(){
-    	$value = \Request::input('term');
+        $value = \Request::input('term');
       $type = \Request::input('searchtype');
       if($type=="en"){
         $savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();
@@ -36,7 +36,7 @@ class DataController extends Controller
       $images = $html11->find('img');
       if($images)
         $image = $images[0];
-      return view('pages.result', compact('result', 'term', 'image'));
+      return view('pages.ev_result', compact('result', 'term', 'image'));
   }
 
     function showMeaningVE($term){
@@ -48,7 +48,7 @@ class DataController extends Controller
       $images = $html11->find('img');
       if($images)
         $image = $images[0];
-      return view('pages.result', compact('result', 'term', 'image'));
+      return view('pages.ve_result', compact('result', 'term', 'image'));
   }
   
 }
