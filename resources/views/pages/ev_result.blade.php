@@ -66,7 +66,7 @@
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
 		$.ajax({
-			url: "http://localhost:8000/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "{{APP_HOST}}/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -74,7 +74,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://localhost:8000/en/result/" + response;
+					window.location.href = "{{APP_HOST}}/en/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");

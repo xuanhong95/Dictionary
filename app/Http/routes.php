@@ -26,3 +26,5 @@ Route::post('test', function()
 {
 	return 'Success! ajax in laravel 5';
 });
+
+define('APP_HOST','http://viecbonus.dev');

@@ -67,7 +67,7 @@
 	$("#VETranslate").click(function(){
 		$.ajax({
 
-			url: "http://localhost:8000/page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
+			url: "{{APP_HOST}}/page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
 			type:"POST",
 
 			data: {
@@ -77,7 +77,7 @@
 
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://localhost:8000/vn/result/" + response;
+					window.location.href = "{{APP_HOST}}/vn/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -99,7 +99,7 @@
 	
 
 	$('#sayit').click(function(){
-		responsiveVoice.speak(($('#english').val()), "Vietnamese Male");
+		responsiveVoice.speak(($('#vietnamese').val()), "Vietnamese Female");
 	});
 </script>
 
