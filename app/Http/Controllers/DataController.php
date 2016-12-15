@@ -29,6 +29,7 @@ class DataController extends Controller
 
     function showMeaningEV($term){
       $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
+      dd($savevalue);
       $result = $savevalue->content;
       $search_query = $term;
       $search_query = urlencode( $search_query );

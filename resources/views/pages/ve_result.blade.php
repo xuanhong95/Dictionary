@@ -33,28 +33,43 @@
 		    border: 1px solid #ccc;
 		    border-top: none;
 		}
+		body{
+			background-image:url({{APP_HOST}}/background.jpg);
+			background-position: 
+			background-repeat: no-repeat;
+			background-size: 100% auto;
+			background-attachment: fixed;
+		}
+		img{
+			display: block;
+			margin:0 auto;
+		}	
 	</style>
 </head>
 <body>
-	<a href="/home"><h1>DICTIONARY</h1></a>
-	<br>
-	<h2>This is the result</h2>
+	<div style="margin: 2% 4%; background:#f2f2f2">
+		<a href="/home"><h1>DICTIONARY</h1></a>
+		<br>
+		<h2>This is the result</h2>
 
-	<div id="EV" class="tabContent">
-		<div>
-			<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
-			<button id="VETranslate" value="vn">Click me!</button>
-			<button id="sayit"> 🔊 Play</button>
+		<div id="EV" class="tabContent">
+			<div>
+				<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
+				<button style ="float: right;margin: -39px 70%; width:8%; height:22px" id="VETranslate" value="vn">Click me!</button>
+				<button style ="float: right;margin: -39px 61%; width:8%; height:22px" id="sayit"> 🔊 Play</button>
+			</div>
+		</div>
+
+
+		<div style=" float:right;width:30%;">
+			{!! $image !!}
+		</div>
+		<div style="width:70%;">
+			{!! $result !!}
 		</div>
 	</div>
-
-	<div>
-		{!! $image !!}
-	</div>
-	<div>
-		{!! $result !!}
-	</div>
 </body>
+	
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -103,12 +118,12 @@
 	
 	var array_tag_a=document.getElementsByClassName("aexample");
 	for (var i = 0; i < array_tag_a.length; i++) {
-		array_tag_a[i].href="http://localhost:8000/vn/result/" +array_tag_a[i].text;
+		array_tag_a[i].href="{{APP_HOST}}/vn/result/" +array_tag_a[i].text;
 	}
 
 
 	$('#sayit').click(function(){
-		responsiveVoice.speak(($('#vietnamese').val()), "Vietnamese Female");
+		responsiveVoice.speak(($('#vietnamese').val()), "Vietnamese Male");
 	});
 </script>
 

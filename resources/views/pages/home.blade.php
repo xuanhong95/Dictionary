@@ -34,10 +34,21 @@
 		    border: 1px solid #ccc;
 		    border-top: none;
 		}
+
+	body{
+		background-image:url(background.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		}
+		
 	</style>
 </head>
 <body> 
+	
+	<div style="border:2px solid black;heigh:90%; margin: 90px 60px  60px 60px;background:#f2f2f2"> 
 	<h1>This is the HomePage</h1>
+	<div style="border:1px solid none; text-align:center">
+	<div style="border:1px solid none">
 	<div>
 		<ul id="tab">
 			<li><a href="javascript:void(0)" onclick="chooseDictType(event,'EV')" class="tablink" id="defaultTab">EngLish-Vietnamese</a></li>
@@ -45,15 +56,24 @@
 		</ul>
 	</div>
 
-	<div id="EV" class="tabContent">
-		<p>English: <input type="text" id="english" autofocus onfocus="this.value= this.value"></p>
-		<button id="EVTranslate" value="en">Click me!</button>
+	
+	<div style="float;margin: 20px" id="EV" class="tabContent" >
+		<p>English: <input type="text" id="english"></p>
+		
+		<button style="margin:-37px 65%;width:80px;heigh:15px" id="EVTranslate" value="en">Click me!</button>
+	    
 	</div>
+	
 
-	<div id="VE" class="tabContent">
-		<p>Vietnamese: <input type="text" id="vietnamese" autofocus onfocus="this.value= this.value"></p>
-		<button id="VETranslate" value="vn">Click me!</button>
+	
+	<div style="float;margin: 20px" id="VE" class="tabContent">
+		<p>Vietnamese: <input type="text" id="vietnamese" ></p>
+		
+		<button style="margin:-37px 65%;width:80px;heigh:15px" id="VETranslate" value="vn">Click me!</button>
+		
 	</div>
+	
+	
 
 </body>
 

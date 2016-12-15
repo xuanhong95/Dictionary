@@ -5,20 +5,20 @@
 	<style>
 		/* Style the links inside the list items */
 		ul.tab li a {
-		    display: inline-block;
-		    color: black;
-		    text-align: center;
-		    padding: 14px 16px;
-		    text-decoration: none;
-		    transition: 0.3s;
-		    font-size: 17px;
+			display: inline-block;
+			color: black;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			transition: 0.3s;
+			font-size: 17px;
 
 		}
 
-		 li{
-		 	list-style-type: none;
-		 	display: inline-block;
-		 }
+		li{
+			list-style-type: none;
+			display: inline-block;
+		}
 
 		/* Change background color of links on hover */
 		ul.tab li a:hover {background-color: #ddd;}
@@ -28,31 +28,45 @@
 
 		/* Style the tab content */
 		.tabcontent {		    
-		    padding: 6px 12px;
-		    border: 1px solid #ccc;
-		    border-top: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
 		}
+
+		body{
+			background-image:url({{APP_HOST}}/background.jpg);
+			background-position: 
+			background-repeat: no-repeat;
+			background-size: 100% auto;
+			background-attachment: fixed;
+		}
+		img{
+			display: block;
+			margin:0 auto;
+		}	
 	</style>
 </head>
 <body>
-	<a href="/home"><h1>DICTIONARY</h1></a>
-	<br>
-	<h2>This is the result</h2>
+	<div style="margin: 2% 4%; background:#f2f2f2">
+		<a href="/home"><h1>DICTIONARY</h1></a>
+		<br>
+		<h2>This is the result</h2>
 
-	<div id="EV" class="tabContent">
-		<div>
-			<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
-			<button id="EVTranslate" value="en">Click me!</button>
-			<button id="sayit"> 🔊 Play</button>
+		<div id="EV" class="tabContent">
+			<div>
+				<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
+				<button style ="float: right;margin: -39px 70%; width:8%; height:22px"id="EVTranslate" value="en">Click me!</button>
+				<button style ="float: right;margin: -39px 61%; width:8%; height:22px"id="sayit"> 🔊 Play</button>
+			</div>
 		</div>
-	</div>
 
-	<div>
-		{!! $image !!}
-	</div>
 
-	<div>
-		{!! $result !!}
+		<div style=" float:right;width:30%;">
+			{!! $image !!}
+		</div>
+		<div style="width:70%;">
+			{!! $result !!}
+		</div>
 	</div>
 </body>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
@@ -99,7 +113,7 @@
 
 	var array_tag_a=document.getElementsByClassName("aexample");
 	for (var i = 0; i < array_tag_a.length; i++) {
-		array_tag_a[i].href="http://localhost:8000/en/result/" +array_tag_a[i].text;
+		array_tag_a[i].href="{{APP_HOST}}/en/result/" +array_tag_a[i].text;
 	}
 
 
