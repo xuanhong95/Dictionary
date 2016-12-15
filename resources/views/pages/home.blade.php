@@ -46,12 +46,12 @@
 	</div>
 
 	<div id="EV" class="tabContent">
-		<p>English: <input type="text" id="english"></p>
+		<p>English: <input type="text" id="english" autofocus onfocus="this.value= this.value"></p>
 		<button id="EVTranslate" value="en">Click me!</button>
 	</div>
 
 	<div id="VE" class="tabContent">
-		<p>Vietnamese: <input type="text" id="vietnamese" ></p>
+		<p>Vietnamese: <input type="text" id="vietnamese" autofocus onfocus="this.value= this.value"></p>
 		<button id="VETranslate" value="vn">Click me!</button>
 	</div>
 

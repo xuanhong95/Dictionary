@@ -24,7 +24,8 @@
 		ul.tab li a:hover {background-color: #ddd;}
 
 		/* Create an active/current tablink class */
-		ul.tab li a:focus, .active {background-color: #ccc;}
+		ul.tab li a: .active {background-color: #ccc;}
+
 
 		/* Style the tab content */
 		.tabcontent {
@@ -35,11 +36,13 @@
 	</style>
 </head>
 <body>
-	<h1>This is the result</h1>
+	<a href="/home"><h1>DICTIONARY</h1></a>
+	<br>
+	<h2>This is the result</h2>
 
 	<div id="EV" class="tabContent">
 		<div>
-			<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}"></p>
+			<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
 			<button id="VETranslate" value="vn">Click me!</button>
 			<button id="sayit"> 🔊 Play</button>
 		</div>
