@@ -3,78 +3,44 @@
 <head>
 	<title>HomePage</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
-	<style>
-		/* Style the links inside the list items */
-		ul.tab li a {
-		    display: inline-block;
-		    color: black;
-		    text-align: center;
-		    padding: 14px 16px;
-		    text-decoration: none;
-		    transition: 0.3s;
-		    font-size: 17px;
-
-		}
-
-		 li{
-		 	list-style-type: none;
-		 	display: inline-block;
-		 }
-
-		/* Change background color of links on hover */
-		ul.tab li a:hover {background-color: #ddd;}
-
-		/* Create an active/current tablink class */
-		ul.tab li a:focus, .active {background-color: #ccc;}
-
-		/* Style the tab content */
-		.tabcontent {
-		    display: none;
-		    padding: 6px 12px;
-		    border: 1px solid #ccc;
-		    border-top: none;
-		}
-
-	body{
-		background-image:url(background.jpg);
-		background-repeat: no-repeat;
-		background-size: 100% auto;
-		}
-		
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
+	
 </head>
 <body> 
 	
-	<div style="border:2px solid black;heigh:90%; margin: 90px 60px  60px 60px;background:#f2f2f2"> 
-	<h1>This is the HomePage</h1>
-	<div style="border:1px solid none; text-align:center">
-	<div style="border:1px solid none">
-	<div>
-		<ul id="tab">
-			<li><a href="javascript:void(0)" onclick="chooseDictType(event,'EV')" class="tablink" id="defaultTab">EngLish-Vietnamese</a></li>
-			<li><a href="javascript:void(0)" onclick="chooseDictType(event,'VE')" class="tablink">Vietnamese-EngLish</a></li>
-		</ul>
-	</div>
+	<div id="container"> 
+		<h1>Dictionary</h1>
+		<div id="wrap_inner">
+			
+			<div>
+				<ul id="tab">
+					<li><a href="javascript:void(0)" onclick="chooseDictType(event,'EV')" class="tablink" id="defaultTab">EngLish-Vietnamese</a></li>
+					<li><a href="javascript:void(0)" onclick="chooseDictType(event,'VE')" class="tablink">Vietnamese-EngLish</a></li>
+				</ul>
+			</div>
 
-	
-	<div style="float;margin: 20px" id="EV" class="tabContent" >
-		<p>English: <input type="text" id="english"></p>
-		
-		<button style="margin:-37px 65%;width:80px;heigh:15px" id="EVTranslate" value="en">Click me!</button>
-	    
-	</div>
-	
+			
+			<div  id="EV" class="content" >
+				<p >English: <input  type="text" id="english" autofocus onfocus="this.value= this.value"></p>
+				
+				<button id="EVTranslate" value="en">Click me!</button>
+			    
+			</div>
+			
 
+			
+			<div id="VE" class="content">
+				<p>Vietnamese: <input type="text" id="vietnamese" autofocus onfocus="this.value= this.value"></p>
+				
+				<button id="VETranslate" value="vn">Click me!</button>
+				
+			
+			</div>
 	
-	<div style="float;margin: 20px" id="VE" class="tabContent">
-		<p>Vietnamese: <input type="text" id="vietnamese" ></p>
-		
-		<button style="margin:-37px 65%;width:80px;heigh:15px" id="VETranslate" value="vn">Click me!</button>
-		
+		</div>
 	</div>
-	
-	
-
 </body>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -179,7 +145,7 @@
 		document.getElementById(dictName).style.display="block";
 		event.currentTarget.className+=" active";
 
-		$("#dictName > p > input").focus();
+		
 		
 	}
 		</script>

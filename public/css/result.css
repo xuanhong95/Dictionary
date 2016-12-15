@@ -1,0 +1,19 @@
+.container{
+	margin: 2% 4%;
+	background:#f2f2f2;
+}
+
+.butt{
+	float: right;
+	margin: -39px 70%;
+	width:8%; 
+	height:22px;
+}
+.image{
+	float:right;
+	width:30%;
+}
+
+.result{
+	width:70%;
+}
