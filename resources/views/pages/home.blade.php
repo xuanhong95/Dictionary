@@ -132,7 +132,7 @@
 	function chooseDictType(event,dictName){
 		var i,tabContent,tablink;
 
-		tabContent=document.getElementsByClassName("tabContent");
+		tabContent=document.getElementsByClassName("content");
 		for(i=0;i<tabContent.length;i++){
 			tabContent[i].style.display="none";
 		}

@@ -1,19 +1,47 @@
 .container{
 	margin: 2% 4%;
-	background:#f2f2f2;
+    background: #F2F3B2;
+    border-radius: 15px;
+    padding: 20px;
+}
+h1{
+	display: block;
+    margin: 0 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+h2{
+	padding-left: 30px;
+}
+
+.tabcontent {
+    padding: 10px 35px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+input{
+    border-radius: 9px;
+    height: 30px;
 }
 
 .butt{
-	float: right;
-	margin: -39px 70%;
+    margin-left: 30px;
 	width:8%; 
-	height:22px;
+    border-radius: 9px;
+    height: 30px;
+
+}
+.butt:hover{
+    color: blue;
 }
 .image{
+	padding-top: 20px;
 	float:right;
 	width:30%;
 }
 
 .result{
 	width:70%;
+	padding-top: 20px;
+    padding-left: 40px;
 }

@@ -111,6 +111,10 @@ outline: thin dotted;
 a:active,
 a:hover {
 outline: 0;
+color: red;
+}
+a{
+	text-decoration: none;
 }
  
 /* ==========================================================================
