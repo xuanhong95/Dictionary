@@ -66,7 +66,7 @@
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
 		$.ajax({
-			url: "http://viecbonus.dev/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://localhost:8000/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -74,7 +74,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://viecbonus.dev/en/result/" + response;
+					window.location.href = "http://localhost:8000/en/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -88,23 +88,12 @@
 
 
 	//add listener for enter keyup listener event
-	var en=document.getElementById("english");
-		
-	en.addEventListener('keyup',function(event){
-		enterpress(event);
-	},false);
-
-	function enterpress(evt){
-		var key = evt.which ;
-		
-		if(key==13){
-			if(evt.currentTarget.id=="english"){
-				document.getElementById("EVTranslate").click();
-			}else{
-				document.getElementById("VETranslate").click();
-			}
+	document.getElementById("english").addEventListener('keydown',function(event){
+		var key=event.which || event.keycode;
+		if (key==13) {
+			document.getElementById('EVTranslate').click();
 		}
-	}
+	},false);
 
 	$('#sayit').click(function(){
 		responsiveVoice.speak($('#english').val());

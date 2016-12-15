@@ -67,7 +67,7 @@
 	$("#VETranslate").click(function(){
 		$.ajax({
 
-			url: "http://viecbonus.dev/page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
+			url: "http://localhost:8000/page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
 			type:"POST",
 
 			data: {
@@ -77,7 +77,7 @@
 
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://viecbonus.dev/vn/result/" + response;
+					window.location.href = "http://localhost:8000/vn/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -89,29 +89,14 @@
 
 	});
 
-	//add listener for enter keyup listener event
-	// var en=document.getElementById("english");
-	// var vn=document.getElementById("vietnamese");
-		
-	// en.addEventListener('keyup',function(event){
-	// 	enterpress(event);
-	// },false);
-	// vn.addEventListener('keyup',function(event){
-	// 	enterpress(event);
-	// },false);
 
-
-	function enterpress(evt){
-		var key = evt.which ;
-		
-		if(key==13){
-			if(evt.currentTarget.id=="english"){
-				document.getElementById("EVTranslate").click();
-			}else{
-				document.getElementById("VETranslate").click();
-			}
+	document.getElementById("vietnamese").addEventListener('keydown',function(event){
+		var key=event.which || event.keycode;
+		if (key==13) {
+			document.getElementById('VETranslate').click();
 		}
-	}
+	},false);
+	
 
 	$('#sayit').click(function(){
 		responsiveVoice.speak(($('#english').val()), "Vietnamese Male");
