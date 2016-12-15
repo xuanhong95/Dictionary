@@ -8,7 +8,7 @@ use App\Http\Requests;
 class DataController extends Controller
 {
     function checkDatabase(){
-        $value = \Request::input('term');
+      $value = \Request::input('term');
       $type = \Request::input('searchtype');
       if($type=="en"){
         $savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();

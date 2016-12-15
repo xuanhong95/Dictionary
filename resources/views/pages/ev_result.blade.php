@@ -66,7 +66,7 @@
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
 		$.ajax({
-			url: "page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://viecbonus.dev/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -74,7 +74,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://localhost:8000/en/result/" + response;
+					window.location.href = "http://viecbonus.dev/en/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -107,7 +107,7 @@
 	}
 
 	$('#sayit').click(function(){
-		responsiveVoice.speak(($('#english').val()), "Vietnamese Male");
+		responsiveVoice.speak($('#english').val());
 	});
 </script>
 

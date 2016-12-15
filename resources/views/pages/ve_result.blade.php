@@ -28,7 +28,6 @@
 
 		/* Style the tab content */
 		.tabcontent {
-		    display: none;
 		    padding: 6px 12px;
 		    border: 1px solid #ccc;
 		    border-top: none;
@@ -40,8 +39,8 @@
 
 	<div id="EV" class="tabContent">
 		<div>
-			<p>Vietnamese: <input type="text" id="english" value="{!!$term!!}"></p>
-			<button id="EVTranslate" value="en">Click me!</button>
+			<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}"></p>
+			<button id="VETranslate" value="vn">Click me!</button>
 			<button id="sayit"> 🔊 Play</button>
 		</div>
 	</div>
@@ -68,7 +67,7 @@
 	$("#VETranslate").click(function(){
 		$.ajax({
 
-			url: "page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
+			url: "http://viecbonus.dev/page?term=" + $('#vietnamese').val()+"&searchtype="+$('#VETranslate').val(),
 			type:"POST",
 
 			data: {
@@ -78,7 +77,7 @@
 
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "vn/result/" + response;
+					window.location.href = "http://viecbonus.dev/vn/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -91,15 +90,15 @@
 	});
 
 	//add listener for enter keyup listener event
-	var en=document.getElementById("english");
-	var vn=document.getElementById("vietnamese");
+	// var en=document.getElementById("english");
+	// var vn=document.getElementById("vietnamese");
 		
-	en.addEventListener('keyup',function(event){
-		enterpress(event);
-	},false);
-	vn.addEventListener('keyup',function(event){
-		enterpress(event);
-	},false);
+	// en.addEventListener('keyup',function(event){
+	// 	enterpress(event);
+	// },false);
+	// vn.addEventListener('keyup',function(event){
+	// 	enterpress(event);
+	// },false);
 
 
 	function enterpress(evt){
