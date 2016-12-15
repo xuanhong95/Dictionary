@@ -97,9 +97,16 @@
 		}
 	},false);
 
+	var array_tag_a=document.getElementsByClassName("aexample");
+	for (var i = 0; i < array_tag_a.length; i++) {
+		array_tag_a[i].href="http://localhost:8000/en/result/" +array_tag_a[i].text;
+	}
+
+
 	$('#sayit').click(function(){
 		responsiveVoice.speak($('#english').val());
 	});
+	
 </script>
 
 </html>
