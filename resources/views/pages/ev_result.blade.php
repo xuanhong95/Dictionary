@@ -35,11 +35,13 @@
 	</style>
 </head>
 <body>
-	<h1>This is the result</h1>
+	<a href="/home"><h1>DICTIONARY</h1></a>
+	<br>
+	<h2>This is the result</h2>
 
 	<div id="EV" class="tabContent">
 		<div>
-			<p>English: <input type="text" id="english" value="{!!$term!!}"></p>
+			<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
 			<button id="EVTranslate" value="en">Click me!</button>
 			<button id="sayit"> 🔊 Play</button>
 		</div>
@@ -95,9 +97,16 @@
 		}
 	},false);
 
+	var array_tag_a=document.getElementsByClassName("aexample");
+	for (var i = 0; i < array_tag_a.length; i++) {
+		array_tag_a[i].href="http://localhost:8000/en/result/" +array_tag_a[i].text;
+	}
+
+
 	$('#sayit').click(function(){
 		responsiveVoice.speak($('#english').val());
 	});
+	
 </script>
 
 </html>
