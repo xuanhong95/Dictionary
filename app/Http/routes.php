@@ -22,6 +22,7 @@ Route::any('testpage', ['middleware' => 'cors', function()
 }]);
 
 Route::any('/page', 'DataController@checkDatabase');
+Route::any('mobile/en/result/{term}', ['as' => 'term', 'uses' => 'DataController@mobileJsonEN']);
 Route::any('en/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningEV']);
 Route::any('vn/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningVE']);
 
