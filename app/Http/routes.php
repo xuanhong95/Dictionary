@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 Route::get('/home','PagesController@getHomeView');
 
-
+Route::any('testpage', ['middleware' => 'cors', function()
+{
+    return "sucess";
+}]);
 
 Route::any('/page', 'DataController@checkDatabase');
 Route::any('en/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningEV']);
