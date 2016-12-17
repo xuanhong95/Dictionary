@@ -20,7 +20,7 @@ class DataController extends Controller
       return "Từ không tồn tại";
     }
     else{
-      return json_encode($value);
+      return $value;
     }
   }	
 
