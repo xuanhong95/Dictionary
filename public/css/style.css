@@ -1,0 +1,43 @@
+
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+
+}
+
+ li{
+ 	list-style-type: none;
+ 	display: inline-block;
+ }
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li a: .active {background-color: #ccc;}
+
+
+/* Style the tab content */
+.tabcontent {
+    padding: 10px 35px;
+    border-bottom: 1px solid #ccc;
+}
+body{
+	background-image:url(../background.jpg);
+	background-position: 
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-attachment: fixed;
+}
+img{
+	display: block;
+	margin:0 auto;
+}
+

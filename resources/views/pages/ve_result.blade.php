@@ -2,52 +2,12 @@
 <head>
 	<title>RESULT</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
-	<style>
-		/* Style the links inside the list items */
-		ul.tab li a {
-		    display: inline-block;
-		    color: black;
-		    text-align: center;
-		    padding: 14px 16px;
-		    text-decoration: none;
-		    transition: 0.3s;
-		    font-size: 17px;
-
-		}
-
-		 li{
-		 	list-style-type: none;
-		 	display: inline-block;
-		 }
-
-		/* Change background color of links on hover */
-		ul.tab li a:hover {background-color: #ddd;}
-
-		/* Create an active/current tablink class */
-		ul.tab li a: .active {background-color: #ccc;}
-
-
-		/* Style the tab content */
-		.tabcontent {
-		    padding: 6px 12px;
-		    border: 1px solid #ccc;
-		    border-top: none;
-		}
-		body{
-			background-image:url({{APP_HOST}}/background.jpg);
-			background-position: 
-			background-repeat: no-repeat;
-			background-size: 100% auto;
-			background-attachment: fixed;
-		}
-		img{
-			display: block;
-			margin:0 auto;
-		}	
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/result.css') }}">
 </head>
 <body>
-	<div style="margin: 2% 4%; background:#f2f2f2">
+	<div class="container" >
 		<a href="/home"><h1>DICTIONARY</h1></a>
 		<br>
 		<h2>This is the result</h2>
@@ -55,16 +15,17 @@
 		<div id="EV" class="tabContent">
 			<div>
 				<p>Vietnamese: <input type="text" id="vietnamese" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
-				<button style ="float: right;margin: -39px 70%; width:8%; height:22px" id="VETranslate" value="vn">Click me!</button>
-				<button style ="float: right;margin: -39px 61%; width:8%; height:22px" id="sayit"> 🔊 Play</button>
+				<button class="butt"  id="VETranslate" value="vn">Click me!</button>
+				<button class="butt"  id="sayit"> 🔊 Play</button>
 			</div>
 		</div>
 
 
-		<div style=" float:right;width:30%;">
+		<div class="image" >
 			{!! $image !!}
 		</div>
-		<div style="width:70%;">
+
+		<div class="result" >
 			{!! $result !!}
 		</div>
 	</div>
