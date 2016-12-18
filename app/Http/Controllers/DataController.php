@@ -28,10 +28,10 @@ class DataController extends Controller
   function mobileJsonEN($term){
     $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
     if(!$savevalue){
-      return '{"content":"Từ không tồn tại"}';
+      return "Từ không tồn tại";
     }
     else{
-      return json_encode($savevalue);
+      return $savevalue;
     }
   }
 
