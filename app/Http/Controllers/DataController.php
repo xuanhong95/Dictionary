@@ -31,7 +31,33 @@ class DataController extends Controller
       return "Từ không tồn tại";
     }
     else{
-      return $savevalue;
+      $returnJSON = "";
+      $search_query = $term;
+      $search_query = urlencode( $search_query );
+      $html11 = file_get_html( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
+      $images = $html11->find('img');
+      if($images)
+        $image = $images[0];
+      $returnJSON = '{"content":"'.$savevalue->content.'","image":"'. $image . '"}';
+      return $returnJSON;
+    }
+  }
+
+  function mobileJsonVN($term){
+    $savevalue = \DB::table('viet_anh')->where('word', '=', $term)->first();
+    if(!$savevalue){
+      return "Từ không tồn tại";
+    }
+    else{
+      $returnJSON = "";
+      $search_query = $term;
+      $search_query = urlencode( $search_query );
+      $html11 = file_get_html( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
+      $images = $html11->find('img');
+      if($images)
+        $image = $images[0];
+      $returnJSON = '{"content":"'.$savevalue->content.'","image":"'. $image . '"}';
+      return $returnJSON;
     }
   }
 
