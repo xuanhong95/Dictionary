@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="container">
-		<a href="/home"><h1>DICTIONARY</h1></a>
+		<a href="\"><h1>DICTIONARY</h1></a>
 		<br>
 		<h2>This is the result</h2>
 

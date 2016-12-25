@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	return redirect()->route('home');
 });
-Route::get('/home','PagesController@getHomeView');
+Route::get('/home',[
+	 'as' => 'home',
+	'uses'=>'PagesController@getHomeView'
+]);
 
 Route::any('testpage', ['middleware' => 'cors', function()
 {
@@ -22,10 +25,10 @@ Route::any('testpage', ['middleware' => 'cors', function()
 }]);
 
 Route::any('/page', 'DataController@checkDatabase');
-Route::any('mobile/en/result/{term}', ['as' => 'term', 'uses' => 'DataController@mobileJsonEN']);
-Route::any('mobile/vn/result/{term}', ['as' => 'term', 'uses' => 'DataController@mobileJsonVN']);
-Route::any('en/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningEV']);
-Route::any('vn/result/{term}',[ 'as' => 'term', 'uses' => 'DataController@showMeaningVE']);
+Route::any('mobile/en/result/{term}', ['as' => 'mobile.en', 'uses' => 'DataController@mobileJsonEN']);
+Route::any('mobile/vn/result/{term}', ['as' => 'mobile.vi', 'uses' => 'DataController@mobileJsonVN']);
+Route::any('en/result/{term}',[ 'as' => 'en', 'uses' => 'DataController@showMeaningEV']);
+Route::any('vn/result/{term}',[ 'as' => 'vi', 'uses' => 'DataController@showMeaningVE']);
 
 Route::post('test', function()
 {
