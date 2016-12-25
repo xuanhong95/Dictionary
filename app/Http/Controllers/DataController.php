@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 include "simple_html_dom.php";
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -11,9 +12,9 @@ class DataController extends Controller
     $value = \Request::input('term');
     $type = \Request::input('searchtype');
     if($type=="en"){
-      $savevalue = \DB::table('anh_viet')->where('word', '=', $value)->first();
+      $savevalue = DB::table('anh_viet')->where('word', '=', $value)->first();
     }else{
-      $savevalue = \DB::table('viet_anh')->where('word', '=', $value)->first();
+      $savevalue = DB::table('viet_anh')->where('word', '=', $value)->first();
     }
     
     if(!$savevalue){
@@ -26,7 +27,7 @@ class DataController extends Controller
 
 
   function mobileJsonEN($term){
-    $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
+    $savevalue = DB::table('anh_viet')->where('word', '=', $term)->first();
     if(!$savevalue){
       return "Từ không tồn tại";
     }
@@ -44,7 +45,7 @@ class DataController extends Controller
   }
 
   function mobileJsonVN($term){
-    $savevalue = \DB::table('viet_anh')->where('word', '=', $term)->first();
+    $savevalue = DB::table('viet_anh')->where('word', '=', $term)->first();
     if(!$savevalue){
       return "Từ không tồn tại";
     }
@@ -62,7 +63,7 @@ class DataController extends Controller
   }
 
   function showMeaningEV($term){
-    $savevalue = \DB::table('anh_viet')->where('word', '=', $term)->first();
+    $savevalue = DB::table('anh_viet')->where('word', '=', $term)->first();
     $result = $savevalue->content;
     $search_query = $term;
     $search_query = urlencode( $search_query );
@@ -74,7 +75,7 @@ class DataController extends Controller
   }
 
   function showMeaningVE($term){
-    $savevalue = \DB::table('viet_anh')->where('word', '=', $term)->first();
+    $savevalue = DB::table('viet_anh')->where('word', '=', $term)->first();
     $result = $savevalue->content;
     $search_query = $term;
     $search_query = urlencode( $search_query );
