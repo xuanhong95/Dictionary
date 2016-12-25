@@ -39,7 +39,7 @@ class DataController extends Controller
       $images = $html11->find('img');
       if($images)
         $image = $images[0];
-      $returnJSON = '{"content":"'.$savevalue->content.'","image":"'. $image . '"}';
+      $returnJSON = '{"content":'. json_encode($savevalue->content).',"image":'. json_encode($image."") . '}';
       return $returnJSON;
     }
   }
@@ -57,7 +57,7 @@ class DataController extends Controller
       $images = $html11->find('img');
       if($images)
         $image = $images[0];
-      $returnJSON = '{"content":"'.$savevalue->content.'","image":"'. $image . '"}';
+       $returnJSON = '{"content":'. json_encode($savevalue->content).',"image":'. json_encode($image."") . '}';
       return $returnJSON;
     }
   }
