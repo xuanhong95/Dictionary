@@ -5,6 +5,12 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/result.css') }}">
+	<style>
+		a.aexample{
+			pointer-events: none;
+			color: red;
+		}
+		</style>
 </head>
 <body>
 	<div class="container">
@@ -71,10 +77,10 @@
 		}
 	},false);
 
-	var array_tag_a=document.getElementsByClassName("aexample");
-	for (var i = 0; i < array_tag_a.length; i++) {
-		array_tag_a[i].href="{{APP_HOST}}/en/result/" +array_tag_a[i].text;
-	}
+	//var array_tag_a=document.getElementsByClassName("aexample");
+	//for (var i = 0; i < array_tag_a.length; i++) {
+	//	array_tag_a[i].href="{{APP_HOST}}/en/result/" +array_tag_a[i].text;
+	//}
 
 
 	$('#sayit').click(function(){
