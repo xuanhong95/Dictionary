@@ -10,6 +10,7 @@
 			pointer-events: none;
 			color: red;
 		}
+		</style>
 </head>
 <body>
 	<div class="container">
