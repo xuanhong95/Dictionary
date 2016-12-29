@@ -13,7 +13,10 @@ h1{
 h2{
 	padding-left: 30px;
 }
-
+.aidiom{
+	color:red;
+	pointer-events:none;
+}
 .tabcontent {
     padding: 10px 35px;
     border-bottom: 1px solid #ccc;
