@@ -24,6 +24,13 @@ input{
     height: 30px;
 }
 
+.title{
+	font-weight: bold;
+}
+.type{
+	color: teal;
+}
+
 .butt{
     margin-left: 30px;
 	width:8%; 
