@@ -55,9 +55,6 @@
 
 	});
 
-	
-
-
 	//add listener for enter keyup listener event
 	var en=document.getElementById("english");
 		
