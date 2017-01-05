@@ -1,21 +1,30 @@
 .container{
-	margin: 2% 4%;
+    margin: 2% 4%;
     background: #F2F3B2;
     border-radius: 15px;
     padding: 20px;
+    overflow: auto;
 }
 h1{
-	display: block;
+    display: block;
     margin: 0 20px;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    color: blue;
+}
+h1:hover{
+    font-size: 35px;
+    color: red;
+}
+
+hr{
+    color: #ccc;
 }
 h2{
-	padding-left: 30px;
+    padding-left: 30px;
 }
 .aidiom{
-	color:red;
-	pointer-events:none;
+    color:red;
+    pointer-events:none;
 }
 .tabcontent {
     padding: 10px 35px;
@@ -43,13 +52,18 @@ input{
     color: blue;
 }
 .image{
-	padding-top: 20px;
-	float:right;
-	width:30%;
+    padding-top: 20px;
+    float:left;
+    width:30%;
 }
 
 .result{
-	width:70%;
-	padding-top: 20px;
-    padding-left: 40px;
+    float: right;
+    display: inline-block;
+    width:65%;
+    padding-top: 20px;
+    height: 300px;
+    overflow: auto;
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
 }

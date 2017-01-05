@@ -15,8 +15,8 @@
 <body>
 	<div class="container">
 		<a href="\"><h1>DICTIONARY</h1></a>
+		<hr>
 		<br>
-		<h2>This is the result</h2>
 
 		<div id="EV" class="tabContent">
 			<div>
@@ -26,13 +26,14 @@
 			</div>
 		</div>
 
+		<div class="result">
+			{!! $result !!}
+		</div>
 
 		<div class="image">
 			{!! $image !!}
 		</div>
-		<div class="result">
-			{!! $result !!}
-		</div>
+		
 	</div>
 </body>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
