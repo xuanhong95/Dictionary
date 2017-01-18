@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	return redirect()->route('home');
+	return view('welcome');
 });
 Route::get('/home',[
 	 'as' => 'home',
@@ -35,3 +35,7 @@ Route::post('test', function()
 });
 
 define('APP_HOST','http://viecbonus.dev');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

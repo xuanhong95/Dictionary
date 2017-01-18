@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<a href="\"><h1>DICTIONARY</h1></a>
+		<a href="\"><h1>Dictionary</h1></a>
 		<hr>
 		<br>
 
