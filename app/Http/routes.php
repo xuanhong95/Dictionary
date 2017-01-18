@@ -36,6 +36,3 @@ Route::post('test', function()
 
 define('APP_HOST','http://viecbonus.dev');
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');

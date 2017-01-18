@@ -1,7 +1,6 @@
-<html>
+@extends('layouts.app')
+@section('content')
 <head>
-	<title>RESULT</title>
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/result.css') }}">
@@ -10,41 +9,33 @@
 			pointer-events: none;
 			color: red;
 		}
-		</style>
+	</style>
 </head>
-<body>
-	<div class="container">
-		<a href="\"><h1>Dictionary</h1></a>
-		<hr>
-		<br>
+<div class="container">
+	<a href="\"><h1>Dictionary</h1></a>
+	<hr>
+	<br>
 
-		<div id="EV" class="tabContent">
-			<div>
-				<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
-				<button class="butt" id="EVTranslate" value="en">Click me!</button>
-				<button class="butt" id="sayit"> 🔊 Play</button>
-			</div>
+	<div id="EV" class="tabContent">
+		<div>
+			<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
+			<button class="butt" id="EVTranslate" value="en">Click me!</button>
+			<button class="butt" id="sayit"> 🔊 Play</button>
 		</div>
-
-		<div class="result">
-			{!! $result !!}
-		</div>
-
-		<div class="image">
-			{!! $image !!}
-		</div>
-		
 	</div>
+
+	<div class="result">
+		{!! $result !!}
+	</div>
+
+	<div class="image">
+		{!! $image !!}
+	</div>
+
+</div>
 </body>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$.ajaxSetup({
-		headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		}
-	});
-</script>
 
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
@@ -90,4 +81,4 @@
 	
 </script>
 
-</html>
+@endsection

@@ -1,8 +1,8 @@
+@extends('layouts.app')
+@section('content')
 <html>
-
 <head>
 	<title>HomePage</title>
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
@@ -14,7 +14,7 @@
 		<h1>Dictionary</h1>
 		<div id="wrap_inner">
 			<div  id="EV" class="content" >
-				<p >English: <input  type="text" id="english" autofocus onfocus="this.value= this.value"></p>
+				<p>English: <input type="text" id="english" autofocus onfocus="this.value= this.value"></p>
 				<button id="EVTranslate" value="en">Click me!</button> 
 			</div>
 			
@@ -24,13 +24,7 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-	$.ajaxSetup({
-		headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		}
-	});
-</script>
+
 
 <script type="text/javascript">
 	$("#EVTranslate").click(function(){
@@ -75,3 +69,4 @@
 		</script>
 
 </html>
+@endsection
