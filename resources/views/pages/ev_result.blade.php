@@ -19,6 +19,7 @@
 		<div class="history">
 			@foreach($words as $word)
 			<span>{{ $word }}</span>
+			@endforeach
 		</div>
 		@endif
 	</div>
