@@ -1,8 +1,4 @@
 .container{
-    margin: 2% 4%;
-    background: #F2F3B2;
-    border-radius: 15px;
-    padding: 20px;
     overflow: auto;
 }
 h1{
@@ -66,4 +62,7 @@ input{
     overflow: auto;
     border-left: 1px solid #ccc;
     padding-left: 20px;
+}
+.aexample{
+    color:#337ab7;
 }

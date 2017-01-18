@@ -4,15 +4,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/result.css') }}">
-	<style>
-		a.aexample{
-			pointer-events: none;
-			color: red;
-		}
-	</style>
 </head>
+<body>
 <div class="container">
-	<a href="\"><h1>Dictionary</h1></a>
+	<a href="/"><h1>Dictionary</h1></a>
 	<hr>
 	<br>
 
@@ -23,7 +18,8 @@
 			<button class="butt" id="sayit"> 🔊 Play</button>
 		</div>
 	</div>
-
+	
+	<hr>
 	<div class="result">
 		{!! $result !!}
 	</div>
@@ -38,9 +34,13 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+	$('.aexample').attr('href','#');
+
 	$("#EVTranslate").click(function(){
+		var urls="http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val();
+		alert(urls);
 		$.ajax({
-			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: urls,
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -56,10 +56,30 @@
 			},error:function(){ 
 				alert("error!!!!");
 			}
-    	}); //end of ajax
+    		}); //end of ajax
 
 	});
 
+	$('.aexample').on('click',function(){
+		$.ajax({
+			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			type:"POST",
+			data: {
+				term: $(this).text(),
+				searchtype: $('#EVTranslate').val()
+			},
+			success:function(response){
+				if(response != "Từ không tồn tại"){
+					window.location.href = "http://54.255.173.90/en/result/" + response;
+				}
+				else{
+					alert("Từ không tồn tại");
+				}
+			},error:function(){ 
+				alert("error!!!!");
+			}
+    		}); //end of ajax
+	});
 
 	//add listener for enter keyup listener event
 	document.getElementById("english").addEventListener('keydown',function(event){
