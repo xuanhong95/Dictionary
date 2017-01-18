@@ -37,10 +37,8 @@
 	$('.aexample').attr('href','#');
 
 	$("#EVTranslate").click(function(){
-		var urls="http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val();
-		alert(urls);
 		$.ajax({
-			url: urls,
+			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
