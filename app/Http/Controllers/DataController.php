@@ -45,11 +45,11 @@ class DataController extends Controller
     $result = $savevalue->content;
     $search_query = $term;
     $search_query = urlencode( $search_query );
-    $html11 = file_get_contents( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
+    $html11 = file_get_html( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
     $images = $html11->find('img');
     if($images)
       $image = $images[0];
-    return view('pages.ev_result', crompact('result', 'term', 'image'));
+    return view('pages.ev_result', compact('result', 'term', 'image'));
   }
 
 
