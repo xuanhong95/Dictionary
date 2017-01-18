@@ -7,8 +7,6 @@
 </head>
 <body>
 <div class="container">
-	<a href="/"><h1>Dictionary</h1></a>
-	<hr>
 	<br>
 
 	<div id="EV" class="tabContent">
@@ -17,6 +15,12 @@
 			<button class="butt" id="EVTranslate" value="en">Click me!</button>
 			<button class="butt" id="sayit"> 🔊 Play</button>
 		</div>
+		@if(Auth::user())
+		<div class="history">
+			@foreach($words as $word)
+			<span>{{ $word }}</span>
+		</div>
+		@endif
 	</div>
 	
 	<hr>
@@ -37,12 +41,14 @@
 	$('.aexample').attr('href','#');
 
 	$("#EVTranslate").click(function(){
+
 		$.ajax({
 			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
-				searchtype: $('#EVTranslate').val()
+				searchtype: $('#EVTranslate').val(),
+				
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
@@ -58,26 +64,26 @@
 
 	});
 
-	$('.aexample').on('click',function(){
-		$.ajax({
-			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
-			type:"POST",
-			data: {
-				term: $(this).text(),
-				searchtype: $('#EVTranslate').val()
-			},
-			success:function(response){
-				if(response != "Từ không tồn tại"){
-					window.location.href = "http://54.255.173.90/en/result/" + response;
+		$('.aexample').on('click',function(){
+			$.ajax({
+				url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+				type:"POST",
+				data: {
+					term: $(this).text(),
+					searchtype: $('#EVTranslate').val()
+				},
+				success:function(response){
+					if(response != "Từ không tồn tại"){
+						window.location.href = "http://54.255.173.90/en/result/" + response;
+					}
+					else{
+						alert("Từ không tồn tại");
+					}
+				},error:function(){ 
+					alert("error!!!!");
 				}
-				else{
-					alert("Từ không tồn tại");
-				}
-			},error:function(){ 
-				alert("error!!!!");
-			}
-    		}); //end of ajax
-	});
+	    		}); //end of ajax
+		});
 
 	//add listener for enter keyup listener event
 	document.getElementById("english").addEventListener('keydown',function(event){
