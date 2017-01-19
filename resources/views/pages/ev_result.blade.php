@@ -44,7 +44,9 @@
 	$('.aexample').attr('href','#');
 
 	$('.history').on('click','span',function(){
+		console.log("http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val());
 		$.ajax({
+
 			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
@@ -52,6 +54,7 @@
 				searchtype: $('#EVTranslate').val()
 			},
 			success:function(response){
+				alert("http://54.255.173.90/en/result/"+response;
 				if(response != "Từ không tồn tại"){
 					window.location.href = "http://54.255.173.90/en/result/"+$(this).text()+"/"+response;
 				}
@@ -75,7 +78,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://54.255.173.90/en/result/"+$('#english').val()+"/"+response;
+					window.location.href = "http://54.255.173.90/en/result/"+response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -97,7 +100,7 @@
 				},
 				success:function(response){
 					if(response != "Từ không tồn tại"){
-						window.location.href = "http://54.255.173.90/en/result/"+$(this).text()+"/" + response;
+						window.location.href = "http://54.255.173.90/en/result/"+ response;
 					}
 					else{
 						alert("Từ không tồn tại");

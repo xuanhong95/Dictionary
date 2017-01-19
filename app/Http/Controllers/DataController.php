@@ -13,19 +13,13 @@ class DataController extends Controller
     $value = \Request::input('term');
     $type = \Request::input('searchtype');
     $savevalue = DB::table('anh_viet')->where('word', '=', $value)->first();  
-
-    if(\Auth::check()){
-      $uid=\Auth::user()->id;
-    }else{
-      $uid='none';
-    }
     
 
     if(!$savevalue){
       return "Từ không tồn tại";
     }
     else{
-      return $uid;
+      return $term;
     }
   }	
 
