@@ -1,6 +1,4 @@
-.container{
-    overflow: auto;
-}
+
 h1{
     display: block;
     margin: 0 20px;
@@ -86,5 +84,6 @@ input{
     padding-left: 20px;
 }
 .aexample{
+    pointer-events: none;
     color:#337ab7;
 }

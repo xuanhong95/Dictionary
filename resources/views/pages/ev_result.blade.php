@@ -45,7 +45,7 @@
 	$('.history').on('click','span',function(){
 		var history = $(this).text();
 		$.ajax({
-			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -67,7 +67,7 @@
 	$("#EVTranslate").click(function(){
 
 		$.ajax({
-			url: "{{APP_HOST}}/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -89,7 +89,7 @@
 
 	$('.aexample').on('click',function(){
 		$.ajax({
-			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $(this).text(),

@@ -33,6 +33,5 @@ Route::post('test', function()
 	return 'Success! ajax in laravel 5';
 });
 
-define('APP_HOST','http://viecbonus.dev');
-
+define('APP_HOST','http://localhost:8000');
 Route::auth();
