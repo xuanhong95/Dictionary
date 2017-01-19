@@ -16,10 +16,12 @@
 			<button class="butt" id="sayit"> 🔊 Play</button>
 		</div>
 		@if(Auth::check())
-		<div class="history inline-block">
+		<div class=" history inline-block">
+			
 			@foreach($history_record as $word)
 			<span>{{ $word->word }}</span>
 			@endforeach
+			
 		</div>
 		@endif
 	</div>

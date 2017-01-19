@@ -60,12 +60,21 @@ input{
 
 .history{
     margin-left: 60px;
+    max-height: 115px;
+    width: 25em;
+    text-indent: 3em;
+    overflow: scroll;
+    background-color: #fff;
 }
 
 .history span{
     display: block;
 }
 
+.history span:hover{
+    background-color: #42b2b8;
+    color:#fff;
+}
 .result{
     float: right;
     display: inline-block;

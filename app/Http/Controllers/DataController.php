@@ -65,9 +65,9 @@ class DataController extends Controller
         History::create(['userId'=>$uid,
                                 'word'=>$term]);
         $history_record=DB::table('histories')->where('userId','=',$uid)->get();
-        if(count($history_record)==5){
+  /*      if(count($history_record)==5){
           DB::table('histories')->where('userId','=',$uid)->first()->delete();
-      }
+      }*/
       return view('pages.ev_result', compact('result', 'term', 'image','history_record'));
     }
 
