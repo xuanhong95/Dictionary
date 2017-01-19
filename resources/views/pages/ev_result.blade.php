@@ -43,7 +43,7 @@
 	$('.aexample').attr('href','#');
 
 	$('.history').on('click','span',function(){
-		alert($(this).text());
+		var history = $(this).text();
 		$.ajax({
 			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
@@ -53,7 +53,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "{{APP_HOST}}/en/result/" +response;
+					window.location.href = "{{APP_HOST}}/en/result/" + history;
 				}
 				else{
 					alert("Từ không tồn tại");
