@@ -54,6 +54,18 @@ input{
     width:30%;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
+.history{
+    margin-left: 60px;
+}
+
+.history span{
+    display: block;
+}
+
 .result{
     float: right;
     display: inline-block;

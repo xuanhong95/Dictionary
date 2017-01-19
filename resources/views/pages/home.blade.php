@@ -25,6 +25,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+
 	$("#EVTranslate").click(function(){
 		$.ajax({
 			url: "page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
@@ -35,7 +36,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "en/result/" + response;
+					window.location.href = "en/result/" +$('#english').val()+"/"+response;
 				}
 				else{
 					alert("Từ không tồn tại");

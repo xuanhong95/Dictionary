@@ -10,15 +10,15 @@
 	<br>
 
 	<div id="EV" class="tabContent">
-		<div>
+		<div class="inline-block">
 			<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
 			<button class="butt" id="EVTranslate" value="en">Click me!</button>
 			<button class="butt" id="sayit"> 🔊 Play</button>
 		</div>
-		@if(Auth::user())
-		<div class="history">
+		@if(Auth::check())
+		<div class="history inline-block">
 			@foreach($history_record as $word)
-			<span>{{ $word }}</span>
+			<span>{{ $word->word }}</span>
 			@endforeach
 		</div>
 		@endif
@@ -39,22 +39,41 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	var uid={{ Auth:user()->id }};
 	$('.aexample').attr('href','#');
+
+	$('.history').on('click','span',function(){
+		$.ajax({
+			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			type:"POST",
+			data: {
+				term: $('#english').val(),
+				searchtype: $('#EVTranslate').val()
+			},
+			success:function(response){
+				if(response != "Từ không tồn tại"){
+					window.location.href = "http://54.255.173.90/en/result/"+$(this).text()+"/"+response;
+				}
+				else{
+					alert("Từ không tồn tại");
+				}
+			},error:function(){ 
+				alert("error!!!!");
+			}
+    		}); //end of ajax
+	});
 
 	$("#EVTranslate").click(function(){
 
 		$.ajax({
-			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val()+"&userId="+uid,
+			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
-				searchtype: $('#EVTranslate').val(),
-				userId:uid
+				searchtype: $('#EVTranslate').val()
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://54.255.173.90/en/result/" + response;
+					window.location.href = "http://54.255.173.90/en/result/"+$('#english').val()+"/"+response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -76,7 +95,7 @@
 				},
 				success:function(response){
 					if(response != "Từ không tồn tại"){
-						window.location.href = "http://54.255.173.90/en/result/" + response;
+						window.location.href = "http://54.255.173.90/en/result/"+$(this).text()+"/" + response;
 					}
 					else{
 						alert("Từ không tồn tại");

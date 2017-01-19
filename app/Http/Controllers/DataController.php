@@ -14,11 +14,18 @@ class DataController extends Controller
     $type = \Request::input('searchtype');
     $savevalue = DB::table('anh_viet')->where('word', '=', $value)->first();  
 
+    if(\Auth::check()){
+      $uid=\Auth::user()->id;
+    }else{
+      $uid='none';
+    }
+    
+
     if(!$savevalue){
       return "Từ không tồn tại";
     }
     else{
-      return $value;
+      return $uid;
     }
   }	
 
@@ -41,28 +48,29 @@ class DataController extends Controller
     }
   }
 
-  function showMeaningEV($term,$userId=null){
-    
+  function showMeaningEV($term){
     $savevalue = DB::table('anh_viet')->where('word', '=', $term)->first();
     $result = $savevalue->content;
-
-    History::create(['userId'=>$userId,
-                                'word'=>$term,
-                                'times'=>1,]);
-
-    $history_record=DB::table('histories')->where('userId','=',$userId)->get();
-    if($history_record.length==5){
-      DB::table('histories')->where('userId','=',$userId)->first()->delete();
-    }
 
     $search_query = $term;
     $search_query = urlencode( $search_query );
     $html11 = file_get_html( "https://www.google.com/search?q=".$search_query."&tbm=isch" );
     $images = $html11->find('img');
-    if($images)
+    if($images){
       $image = $images[0];
+    }
 
-    
+    if(\Auth::check()){
+        $uid=+\Auth::user()->id;
+        History::create(['userId'=>$uid,
+                                'word'=>$term]);
+        $history_record=DB::table('histories')->where('userId','=',$uid)->get();
+        if(count($history_record)==5){
+          DB::table('histories')->where('userId','=',$uid)->first()->delete();
+      }
+      return view('pages.ev_result', compact('result', 'term', 'image','history_record'));
+    }
+
     return view('pages.ev_result', compact('result', 'term', 'image'));
   }
 
