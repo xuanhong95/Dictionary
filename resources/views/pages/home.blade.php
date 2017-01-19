@@ -36,7 +36,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "en/result/" +$('#english').val()+"/"+response;
+					window.location.href = "en/result/" + response;
 				}
 				else{
 					alert("Từ không tồn tại");

@@ -6,36 +6,35 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/result.css') }}">
 </head>
 <body>
-<div class="container">
-	<br>
+	<div class="container">
+		<br>
 
-	<div id="EV" class="tabContent">
-		<div class="inline-block">
-			<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
-			<button class="butt" id="EVTranslate" value="en">Click me!</button>
-			<button class="butt" id="sayit"> 🔊 Play</button>
+		<div id="EV" class="tabContent">
+			<div class="inline-block">
+				<p>English: <input type="text" id="english" value="{!!$term!!}" autofocus onfocus="this.value= this.value"></p>
+				<button class="butt" id="EVTranslate" value="en">Click me!</button>
+				<button class="butt" id="sayit"> 🔊 Play</button>
+			</div>
+			@if(Auth::check())
+			<div class=" history inline-block">
+				@foreach($history_record as $word)
+				<span>{{ $word->word }}</span>
+				@endforeach
+
+			</div>
+			@endif
 		</div>
-		@if(Auth::check())
-		<div class=" history inline-block">
-			
-			@foreach($history_record as $word)
-			<span>{{ $word->word }}</span>
-			@endforeach
-			
+
+		<hr>
+		<div class="result">
+			{!! $result !!}
 		</div>
-		@endif
-	</div>
-	
-	<hr>
-	<div class="result">
-		{!! $result !!}
-	</div>
 
-	<div class="image">
-		{!! $image !!}
-	</div>
+		<div class="image">
+			{!! $image !!}
+		</div>
 
-</div>
+	</div>
 </body>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -44,19 +43,17 @@
 	$('.aexample').attr('href','#');
 
 	$('.history').on('click','span',function(){
-		console.log("http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val());
 		$.ajax({
-
-			url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
 				searchtype: $('#EVTranslate').val()
 			},
 			success:function(response){
-				alert("http://54.255.173.90/en/result/"+response;
+				alert("{{APP_HOST}}/en/result/"+response);
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://54.255.173.90/en/result/"+$(this).text()+"/"+response;
+					window.location.href = "{{APP_HOST}}/en/result/"+$(this).text()+"/"+response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -70,7 +67,7 @@
 	$("#EVTranslate").click(function(){
 
 		$.ajax({
-			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "{{APP_HOST}}/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
 			data: {
 				term: $('#english').val(),
@@ -78,7 +75,7 @@
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
-					window.location.href = "http://54.255.173.90/en/result/"+response;
+					window.location.href = "{{APP_HOST}}/en/result/"+response;
 				}
 				else{
 					alert("Từ không tồn tại");
@@ -90,26 +87,26 @@
 
 	});
 
-		$('.aexample').on('click',function(){
-			$.ajax({
-				url: "http://54.255.173.90/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
-				type:"POST",
-				data: {
-					term: $(this).text(),
-					searchtype: $('#EVTranslate').val()
-				},
-				success:function(response){
-					if(response != "Từ không tồn tại"){
-						window.location.href = "http://54.255.173.90/en/result/"+ response;
-					}
-					else{
-						alert("Từ không tồn tại");
-					}
-				},error:function(){ 
-					alert("error!!!!");
+	$('.aexample').on('click',function(){
+		$.ajax({
+			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
+			type:"POST",
+			data: {
+				term: $(this).text(),
+				searchtype: $('#EVTranslate').val()
+			},
+			success:function(response){
+				if(response != "Từ không tồn tại"){
+					window.location.href = "{{APP_HOST}}/en/result/"+ response;
 				}
+				else{
+					alert("Từ không tồn tại");
+				}
+			},error:function(){ 
+				alert("error!!!!");
+			}
 	    		}); //end of ajax
-		});
+	});
 
 	//add listener for enter keyup listener event
 	document.getElementById("english").addEventListener('keydown',function(event){
