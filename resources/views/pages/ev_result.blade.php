@@ -17,7 +17,7 @@
 		</div>
 		@if(Auth::user())
 		<div class="history">
-			@foreach($words as $word)
+			@foreach($history_record as $word)
 			<span>{{ $word }}</span>
 			@endforeach
 		</div>
@@ -39,17 +39,18 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+	var uid={{ Auth:user()->id }};
 	$('.aexample').attr('href','#');
 
 	$("#EVTranslate").click(function(){
 
 		$.ajax({
-			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val(),
+			url: "http://54.255.173.90/page?term=" + $('#english').val()+"&searchtype=" + $('#EVTranslate').val()+"&userId="+uid,
 			type:"POST",
 			data: {
 				term: $('#english').val(),
 				searchtype: $('#EVTranslate').val(),
-				
+				userId:uid
 			},
 			success:function(response){
 				if(response != "Từ không tồn tại"){
