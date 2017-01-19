@@ -43,6 +43,7 @@
 	$('.aexample').attr('href','#');
 
 	$('.history').on('click','span',function(){
+		alert($(this).text());
 		$.ajax({
 			url: "{{APP_HOST}}/page?term=" + $(this).text()+"&searchtype=" + $('#EVTranslate').val(),
 			type:"POST",
@@ -51,9 +52,8 @@
 				searchtype: $('#EVTranslate').val()
 			},
 			success:function(response){
-				alert("{{APP_HOST}}/en/result/"+response);
 				if(response != "Từ không tồn tại"){
-					window.location.href = "{{APP_HOST}}/en/result/"+$(this).text()+"/"+response;
+					window.location.href = "{{APP_HOST}}/en/result/" +response;
 				}
 				else{
 					alert("Từ không tồn tại");
